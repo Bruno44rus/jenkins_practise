@@ -14,6 +14,7 @@ pipeline {
                                 ]]
                             ]
     }
+    }
     stage('build and deploy') 
       steps {
         sh 'docker compose down || true'
