@@ -3,16 +3,12 @@ pipeline {
 
   stages {
     stage('Checkout') {
-      steps { checkout poll: true, changelog: true, // Выполняем команду checkout для извлечения исходных кодов из репозитория.
-                            scm: [
-                                $class: 'GitSCM', // Указываем, что используем Git в качестве системы контроля версий.
-                                branches: [[name: '*/main' ]], // Указываем ветку для checkout.
-                                extensions: [],
-                                userRemoteConfigs: [[
-                                    //credentialsId: '' ,  Идентификатор учетных данных для доступа к репозиторию.
-                                    url: "https://github.com/Bruno44rus/jenkins_practise.git" // URL репозитория.
-                                ]]
-                            ]
+      steps checkout scm: [$class: 'GitSCM',
+          userRemoteConfigs: [[url: 'git@https://github.com/Bruno44rus/jenkins_practise.git'
+                              //credentialsId: 'myCredId'
+                              ]],
+                              branches: [[name: 'refs/heads/main']]
+        ], poll: true
     }
     }
     stage('build and deploy'){ 
