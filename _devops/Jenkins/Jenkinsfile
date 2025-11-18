@@ -12,9 +12,6 @@ pipeline {
     }
     stage('build and deploy'){ 
       steps {
-        sh 'pwd'
-        sh 'ls'
-        sh 'cp Dockerfile ./_devops/docker-compose'
         sh 'docker-compose -f ./_devops/docker-compose/docker-compose.yml down || true'
         sh 'docker-compose -f ./_devops/docker-compose/docker-compose.yml up -d'
       }
