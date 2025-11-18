@@ -4,11 +4,10 @@ pipeline {
   stages {
     stage('Checkout') {
       steps { checkout scm: [$class: 'GitSCM',
-          userRemoteConfigs: [[url: 'git@https://github.com/Bruno44rus/jenkins_practise.git'
-                              //credentialsId: 'myCredId'
+          userRemoteConfigs: [[url: 'https://github.com/Bruno44rus/jenkins_practise.git'
                               ]],
-                              branches: [[name: 'refs/heads/main']]
-        ], poll: true
+                              branches: [[name: 'main']]
+        ]
     }
     }
     stage('build and deploy'){ 
