@@ -3,11 +3,11 @@ pipeline {
 
   stages {
     stage('Checkout') {
-      steps { checkout scm: [$class: 'GitSCM',
+      steps { checkout([$class: 'GitSCM',
           userRemoteConfigs: [[url: 'https://github.com/Bruno44rus/jenkins_practise.git'
                               ]],
                               branches: [[name: 'main']]
-        ]
+        ])
     }
     }
     stage('build and deploy'){ 
